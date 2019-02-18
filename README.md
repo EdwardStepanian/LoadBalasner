@@ -1,13 +1,17 @@
--On the back end web servers, run the following commands to install NGINX:
+- On the back end web servers, run the following commands to install NGINX:
+
 `sudo apt-get install -y nginx`
+
 uname -n | sudo tee /usr/share/nginx/html/index.html
--On the load balancer, run the follow commands:
+
+- On the load balancer, run the follow commands:
+
 `sudo apt-get install -y nginx`
 
 
 Use the following as the contents of /etc/nginx/sites-available/default:
 upstream web_backend {
-# Uncomment for the IP Hashing load balancing method:
+`# Uncomment for the IP Hashing load balancing method:
 # ip_hash;
 # Uncomment for the Least Connected load balancing method:
 # least_conn;
@@ -16,6 +20,7 @@ upstream web_backend {
 # Examples:
 # server www1.example.com:8080;
 # server 192.168.1.100;
+`
     server 10.11.12.51;
     server 10.11.12.52;
 }
